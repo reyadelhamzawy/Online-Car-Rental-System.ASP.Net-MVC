@@ -1,0 +1,123 @@
+﻿@model Online_Car_Rental_System.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+@if (Session["client"] != null)
+{
+<!DOCTYPE html>
+<head>
+    <link href="~/Content/Details.css" rel="stylesheet" />
+    <link href="~/Content/registerStyle.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+</head>
+<body>
+    <div class="mimg">
+        <div class="container">
+            <h2>Details</h2>
+            <div class="r-form">
+                @using (Html.BeginForm())
+                {
+                    <div>
+                        <img src="@Url.Content("~/Content/images/" + Model.Img)" width="400" height="300" class="img" />
+                        <hr />
+                        <dl class="dl-horizontal">
+
+                            <dt>
+                                <span>@Html.DisplayNameFor(model => model.Name):</span>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+
+                            <dt>
+                                <span>@Html.DisplayNameFor(model => model.Model):</span>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Model)
+                            </dd>
+
+                            <dt>
+                                <span> @Html.DisplayNameFor(model => model.Type):</span>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Type)
+                            </dd>
+
+                            <dt>
+                                <span>@Html.DisplayNameFor(model => model.numOfChairs):</span>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.numOfChairs)
+                            </dd>
+
+                            <dt>
+                                <span>@Html.DisplayNameFor(model => model.rentAmount):</span>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.rentAmount)
+                            </dd>
+
+                            <dt>
+                                <span>@Html.DisplayNameFor(model => model.Color):</span>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Color)
+                            </dd>
+                            <dt>
+                                <span>@Html.DisplayNameFor(model => model.rentAmount):</span>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.rentAmount)
+                            </dd>
+
+                            @if (Model.ownerClientID != null)
+                               {
+
+                                   <label id="l2" style="font-size:15px" class="label label-danger">Not Available</label>
+                               }
+                               @if (Model.ownerClientID == null)
+                               {
+                                    @Html.ActionLink("Rent", "Rent", new { Model.ID })
+                               }
+
+
+                        </dl>
+
+                        @if (Model.ownerClientID != null)
+                        {
+                            <script>
+                                alert("This Car Is Unavalibale To Rent")
+                            </script>
+
+                        }
+
+                        else
+                        {
+                            <script>
+                                alert("This Car Is Avalibale To Rent")
+                            </script>
+                        }
+                        <hr />
+                    </div>
+                    <p>
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+}
+else
+{
+    <h1>No Access You Should Login First !</h1>
+
+}

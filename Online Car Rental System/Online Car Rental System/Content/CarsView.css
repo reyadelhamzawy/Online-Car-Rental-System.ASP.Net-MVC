@@ -1,0 +1,29 @@
+﻿
+h2 {
+    padding:20px;
+    font-weight:bold;
+    color:#0e92f4;
+    font-size:40px
+}
+
+.col-md-3 {
+    background:#EEE;
+    border-radius:5%;
+    margin-left:90px;
+    margin-bottom:30px
+}
+
+
+.col-md-3 .img {
+    height:150px;
+    width:250px;
+    border-radius:5%;
+    margin-top:10px
+}
+
+.col-md-3 .row {
+    font-weight:bold;
+    padding-top:10px;
+    padding-bottom:10px;
+    border-radius:7%;
+}

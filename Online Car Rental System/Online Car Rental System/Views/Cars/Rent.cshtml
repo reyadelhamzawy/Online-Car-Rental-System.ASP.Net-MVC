@@ -1,0 +1,25 @@
+﻿@model Online_Car_Rental_System.Models.rented_car
+@{
+    ViewBag.Title = "Rent";
+}
+
+<h2>Rent</h2>
+<div class="r-form" style="margin-left:20px">
+    @using (Html.BeginForm("Rent", "Cars", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.DisplayNameFor(c => c.days_num)
+            @Html.TextBoxFor(x => x.days_num, new { @class = "form-control", required = "required" })
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="payment" value="payment">
+                <option value="paypal">paypal</option>
+                <option value="cash">cash</option>
+            </select>
+        </div>
+        <input type="hidden" name="carid" value=@Html.ViewContext.RouteData.Values["id"].ToString()>
+
+
+        <button class="btn btn-primary" type="submit">save</button>
+    }
+</div>

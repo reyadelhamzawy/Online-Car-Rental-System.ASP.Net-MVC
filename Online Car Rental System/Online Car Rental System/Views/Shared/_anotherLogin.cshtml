@@ -1,0 +1,45 @@
+﻿
+<head>
+    <link href="~/Content/homeStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="col-md-4 col-xs-12">
+        <div class="mform">
+            <form class="form-group" id="r_form">
+                <input type="text" name="email" class="form-control" placeholder="Username"><br />
+                <input type="password" name="Password" class="form-control" placeholder="Password"><br />
+                <button type="button" class="btn btn-warning" id="login">LogIn</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+@section Scripts{
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+    $(document).ready(function () {
+
+        $("#login").click(function () {
+
+                myData = $("#r_form").serialize();
+
+                $.ajax({
+
+                    type: "Post",
+                    url: "/Client/LogIn",
+                    data: myData,
+                    success: function (response) {
+
+                        alert("Login Successfully ...")
+                    }
+                })
+        })
+    })
+
+    </script>
+}

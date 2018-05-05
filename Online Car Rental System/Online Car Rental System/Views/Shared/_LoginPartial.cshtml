@@ -1,0 +1,47 @@
+﻿@if (Session["client"] != null)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @if (Session["client"].ToString() == "Admin")
+            {
+                @Html.ActionLink("Hello " + Session["client"].ToString() + " !", "Index", "Admin")
+            }
+            else
+            {
+                @Html.ActionLink("Hello " + Session["client"].ToString() + "!", "Index", "Cars")
+            }
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                @if (Session["client"].ToString() == "Admin")
+                {
+                    <li>@Html.ActionLink("All Cars", "Index", "Admin")</li>
+
+                }
+                else
+                {
+                    <li>@Html.ActionLink("All Cars", "Index", "Cars")</li>
+                }
+                @if (Session["client"].ToString() == "Admin")
+                {
+                    
+                    <li>@Html.ActionLink("All Users ", "Users", "Admin")</li>
+                    <li>@Html.ActionLink("Send Massages ", "SendEmail", "Email")</li>
+                    <li>@Html.ActionLink("My Report", "CreatePdf", "ReportPDF")</li>
+                    <li>@Html.ActionLink("SendSms", "SendSms", "SmsNotifir")</li>
+                }
+                <li>@Html.ActionLink("Search Items", "Category", "Client")</li>
+                <li role="separator" class="divider"></li>
+                <li>@Html.ActionLink("LogOut ", "LogOut", "Client")</li>
+            </ul>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Sign Up", "register", "Client", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Sign In", "LogIn", "Client", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

@@ -1,0 +1,89 @@
+﻿/*start lifestyle_img*/
+
+.lifestyle_img {
+    background:url('images/cars-background.png') no-repeat center center fixed;
+    width: 100%;
+	min-height: 500px;
+}
+
+.lifestyle_img .olifestyle_img {
+    background:rgba(2,2,2,0.5);
+	min-height: 600px;
+}
+
+.lifestyle_img .mtext {
+    margin-top:80px;
+}
+
+
+
+.lifestyle_img h2 {
+    font-size: 50px;
+    color:#fff;
+    font-weight:bold;
+    padding-top: 4px;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    padding-left: 15px;
+}
+
+.lifestyle_img p {
+    font-size: 20px;
+    color:#f1e89c;
+    font-weight:bold;
+    padding-right: 15px;
+    padding-bottom: 0px;
+    padding-left: 15px; 
+}
+
+
+/*start login form*/
+.lifestyle_img .mform {
+    margin-top:250px;
+    background:rgba(40,40,40,0.5);
+    padding:50px;
+    border-radius: 6%;
+}
+/*end login form*/
+
+/*end lifestyle_img*/
+
+/*start prands*/
+
+.prands
+{
+	min-height: 270px;
+	padding-top: 30px;
+}
+.prands h1
+{
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+
+.prands img
+{
+	opacity: 0.5;
+}
+.prands img:hover
+{
+	opacity: 1;
+	border-bottom: 3px solid #0e92f4
+}
+/*end prands*/
+
+/*start about*/
+.about{
+ 	padding-top: 60px;
+ 	padding-bottom: 60px;
+     background: #EEE
+ }
+
+ .about .lead{
+ 	margin-top: 15px;
+ }
+
+ .about h1 span{
+ 	color: #0e92f4
+ }
+ /*start about*/

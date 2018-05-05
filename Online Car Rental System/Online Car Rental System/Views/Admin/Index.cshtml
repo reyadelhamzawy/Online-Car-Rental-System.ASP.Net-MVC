@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Online_Car_Rental_System.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (Session["client"] != null)
+{
+    if (Session["client"].ToString() == "Admin")
+    {
+        <head>
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <link href="~/Content/registerStyle.css" rel="stylesheet" />
+            <style>
+                .img:hover {
+                    box-shadow: 2px 2px 2px,-2px -2px 2px;
+                    transform: scale(3);
+                    transition: all .8s ease-in-out;
+                    border-radius: 10px;
+                }
+            </style>
+        </head>
+        <div class="container">
+
+
+            <h2>Cars In System</h2>
+
+            <p>
+                @Html.ActionLink("Add New Car", "AddCar")
+            </p>
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Img)
+                    </th>
+                    <th>
+                        <label>availablity</label>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+
+                        <td>
+                            <img src="@Url.Content("~/Content/images/"+Html.DisplayFor(modelItem => item.Img))" width="40" height="50" class="img" style="" />
+                        </td>
+                        <td>
+
+                            @if (item.ownerClientID != null)
+                            {
+
+                                <label id="l2" style="font-size:20px" class="label label-danger">not available</label>
+                            }
+                            @if (item.ownerClientID == null)
+                            {
+
+                                <label id="l2" style="font-size:20px" class="label label-success">available</label>
+                            }
+
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    }
+    else
+    {
+        <h1>You aren't Admin</h1>
+    }
+
+}
+else
+{
+    <h1>No Access You Should Login First !</h1>
+}

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Online_Car_Rental_System.Models.Car>
+
+
+@{
+    ViewBag.Title = "All_Cars";
+}
+@if (Session["client"] != null)
+{
+<head>
+    <link href="~/Content/CarsView.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>All Cars</h2>
+
+                @foreach (var item in Model)
+            {
+                   <div class="col-md-3">
+                           <img src="@Url.Content("~/Content/images/"+Html.DisplayFor(modelItem => item.Img))" class="img center center fixed" />
+                       
+                       <div class="row">
+                           <div class="col-md-12" style="font-size:20px; font-family:Arial, Helvetica, sans-serif">
+                               @Html.DisplayFor(modelItem => item.Name)
+                           </div>
+                           <div class="col-md-12" >
+                               @Html.DisplayFor(modelItem => item.Model)
+                           </div>
+                           <div class="col-md-6">
+                               @Html.ActionLink("Details", "Details",new { item.ID })
+                           </div>
+                           <div class="col-md-6">
+                               @if (item.ownerClientID != null)
+                               {
+
+                                   <label id="l2" style="font-size:15px" class="label label-danger">Not Available</label>
+                               }
+                               @if (item.ownerClientID == null)
+                               {
+                                    @Html.ActionLink("Rent", "Rent", new { item.ID })
+                               }
+                               
+                           </div>
+                       </div>
+                   </div>
+                        <!-- <td>
+                    <a href="Details"><input type="button" class="btn btn-default" value="Details" style="width:75px; margin-top:5px" /></a> 
+                               <input type="button" class="btn btn-success" value="Rent" style="width:75px;margin-top:5px" />
+                    @Html.ActionLink("Edit", "Edit") |
+                    @Html.ActionLink("Details", "Details") |
+                    @Html.ActionLink("Delete", "Delete")
+                </td>-->
+        
+                }
+    </div>
+</body>
+}
+else {
+<h1>No Access You Should Login First !</h1>
+}

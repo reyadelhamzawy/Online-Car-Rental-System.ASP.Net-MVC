@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="~/Content/homeStyle.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="lifestyle_img">
+            <div class="olifestyle_img">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-xs-12 mtext">
+                            <h2>Rental Cars – Search & Save</h2>
+                            <p>Compare 900 Models at over 53,000 locations In Egypt. Best price guaranteed will Introduce and Awesome Service will earn</p>
+                        </div>
+                      
+                                <!--Login-->
+                                @if (Session["client"] == null)
+                                {
+                                    @Html.Partial("_anotherLogin")
+                                }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="prands text-center">
+            <div class="container">
+                <h1>Our Supported Prands</h1>
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="#"><img class="img-responsive center-block" src="~/Content/images/fe8abc8b859ebf76fd0695098808a5fc.png" alt="prand1"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#"><img class="img-responsive center-block" src="~/Content/images/dealer-212.jpg" alt="prand1"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#"><img class="img-responsive center-block" src="~/Content/images/dealer-720.jpg" alt="prand1"></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#"><img class="img-responsive center-block" src="~/Content/images/Toyota-logo-1989-2560x1440-700x300.png" alt="prand1"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about text-center">
+            <div class="container">
+                <h1 style="font-weight: bold;">About <span>Rental Cars.com</span></h1>
+                <p class="lead">
+                    In our System we have a problem with Car renting process, so we want a system that manages all operations done in this process. So we have two types of users, Client and Admin please keep track of available and un available cars and type of payment and the time you want to rant this car.
+                </p>
+            </div>
+        </section>
+    </body>
+
+</html>
+
+

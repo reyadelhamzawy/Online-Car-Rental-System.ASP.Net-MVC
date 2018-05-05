@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Send SMS";
+}
+@if (Session["client"] != null)
+{
+    <head>
+        <link href="~/Content/registerStyle.css" rel="stylesheet" />
+    </head>
+        <form method="post" action="SendSms">
+            <div class="container">
+                <h2> Send SMS </h2> <br /> <br />
+
+                <span class="form-control-static"> To </span>
+                <input class="form-control" type="text"name="num"/><br />
+                <span class="form-control-static"> Message: </span>
+                <input class="form-control" type="text" name="messag" /> <br />
+                <input class="btn btn-primary" type="submit" value="Send" />
+            </div>
+        </form>
+
+}
+else
+{
+    <h1>No Access You Should Login First !</h1>
+}

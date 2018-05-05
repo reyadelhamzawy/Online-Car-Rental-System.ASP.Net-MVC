@@ -1,0 +1,39 @@
+﻿@model Online_Car_Rental_System.Models.Client
+
+@{
+    ViewBag.Title = "LogIn";
+}
+
+<!DOCTYPE html>
+<head>
+    <link href="~/Content/registerStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="mimg">
+        <div class="container">
+            <h2>LogIn</h2>
+            <div class="r-form">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.Email)
+                        @Html.TextBoxFor(c => c.Email, new { @class = "form-control", type = "email" })
+                        @Html.ValidationMessageFor(c => c.Email)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.password)
+                        @Html.TextBoxFor(c => c.password, new { @class = "form-control", type = "password" })
+                        @Html.ValidationMessageFor(c => c.password)
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">LogIn</button>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+

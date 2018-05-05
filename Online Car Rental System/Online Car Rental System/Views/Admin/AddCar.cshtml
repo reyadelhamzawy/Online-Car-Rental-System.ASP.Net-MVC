@@ -1,0 +1,64 @@
+﻿@model Online_Car_Rental_System.ViewModels.Car_CarsTypes
+@{
+    ViewBag.Title = "AddCar";
+}
+@if (Session["client"] != null)
+{
+    if (Session["client"].ToString() == "Admin")
+    {
+        <head>
+            <link href="~/Content/registerStyle.css" rel="stylesheet" />
+        </head>
+        <div class="container">
+            <h2>AddCar</h2>
+            <div class="r-form">
+                @using (Html.BeginForm("AddCar", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="form-group">
+                        @Html.DisplayNameFor(c => c.Car.Name)
+                        @Html.TextBoxFor(x => x.Car.Name, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(y => y.Car.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.DisplayNameFor(c => c.Car.Model)
+                        @Html.TextBoxFor(x => x.Car.Model, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(y => y.Car.Model)
+                    </div>
+                    <div class="form-group">
+                        @Html.DisplayNameFor(c => c.Car.Type)
+                        @Html.DropDownListFor(x => x.Car.Type, new SelectList(Model.CarsTypes, "ID", "Type"), "select car type", new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(y => y.Car.Type)
+                    </div>
+                    <div class="form-group">
+                        @Html.DisplayNameFor(c => c.Car.numOfChairs)
+                        @Html.TextBoxFor(x => x.Car.numOfChairs, new { @class = "form-control", type = "number", required = "required" })
+                        @Html.ValidationMessageFor(y => y.Car.numOfChairs)
+                    </div>
+                    <div class="form-group">
+                        @Html.DisplayNameFor(c => c.Car.Color)
+                        @Html.TextBoxFor(x => x.Car.Color, new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(y => y.Car.Color)
+                    </div>
+                    <div class="form-group">
+                        @Html.DisplayNameFor(c => c.Car.rentAmount)
+                        @Html.TextBoxFor(x => x.Car.rentAmount, new { @class = "form-control", type = "number", required = "required" })
+                        @Html.ValidationMessageFor(y => y.Car.rentAmount)
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="upload" value="image" class="btn btn-primary" name="upload" required />
+                        @Html.ValidationMessageFor(y => y.Car.Img)
+
+                    </div>
+                    <button class="btn btn-primary" type="submit">save</button>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <h1>You aren't Admin</h1>
+    }
+}
+else {
+<h1>No Access You Should Login First !</h1>
+}

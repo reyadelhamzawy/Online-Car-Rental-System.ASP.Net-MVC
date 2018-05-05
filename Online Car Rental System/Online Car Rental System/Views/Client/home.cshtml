@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "home";
+}
+@if (Session["client"] != null)
+{
+<h2>Clients Page</h2>
+}
+else
+{
+    <h1>No Access You Should Login First !</h1>
+}

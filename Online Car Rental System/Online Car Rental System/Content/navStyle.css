@@ -1,0 +1,44 @@
+﻿/*start Navbar*/
+.navbar-inverse {
+    background-color: #ffffff;
+    border-color: #0e92f4;
+}
+
+.navbar-inverse .navbar-nav li a {
+    color: #0e92f4;
+    font-size: 16px;
+}
+
+.navbar-inverse .navbar-nav li a:hover {
+    color: #808080;
+}
+
+.img-responsive {
+    display: block;
+    width: 150px;
+}
+
+.navbar-form{
+    margin-top:9px;
+    margin-left:50px
+}
+.navbar-form .form-control {
+    margin-right: 60px;
+}
+.navbar-form .btn-primary {
+    color: #ffffff;
+    background-color: #0e92f4;
+    border-color: #ffffff;
+}
+
+/*end Navbar*/
+
+/*start footer*/
+
+.copyright span
+{
+	font-weight: bold;
+    color:#0e92f4
+}
+
+/*end footer*/

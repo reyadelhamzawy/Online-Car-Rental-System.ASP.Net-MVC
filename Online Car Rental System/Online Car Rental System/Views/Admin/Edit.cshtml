@@ -1,0 +1,87 @@
+﻿@model Online_Car_Rental_System.ViewModels.Car_CarsTypes
+@{
+    ViewBag.Title = "Edit";
+}
+@if (Session["client"] != null)
+{
+<head>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/registerStyle.css" rel="stylesheet" />
+</head>
+<div class="container">
+
+    <h2>Edit</h2>
+
+    <div class="r-form">
+        @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                @Html.HiddenFor(model => model.Car.ID)
+
+            </div>
+            <div class="form-group">
+                @Html.DisplayNameFor(c => c.Car.Name)
+                @Html.TextBoxFor(x => x.Car.Name, new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(y => y.Car.Name)
+            </div>
+            <div class="form-group">
+                @Html.DisplayNameFor(c => c.Car.Model)
+                @Html.TextBoxFor(x => x.Car.Model, new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(y => y.Car.Model)
+            </div>
+            <div class="form-group">
+                @Html.DisplayNameFor(c => c.Car.Type)
+                @Html.DropDownListFor(x => x.Car.Type, new SelectList(Model.CarsTypes, "ID", "Type"), "select car type", new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(y => y.Car.Type)
+            </div>
+            <div class="form-group">
+                @Html.DisplayNameFor(c => c.Car.numOfChairs)
+                @Html.TextBoxFor(x => x.Car.numOfChairs, new { @class = "form-control", type = "number", required = "required" })
+                @Html.ValidationMessageFor(y => y.Car.numOfChairs)
+            </div>
+            <div class="form-group">
+                @Html.DisplayNameFor(c => c.Car.Color)
+                @Html.TextBoxFor(x => x.Car.Color, new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(y => y.Car.Color)
+            </div>
+            <div class="form-group">
+                @Html.DisplayNameFor(c => c.Car.rentAmount)
+                @Html.TextBoxFor(x => x.Car.rentAmount, new { @class = "form-control", type = "number", required = "required" })
+                @Html.ValidationMessageFor(y => y.Car.rentAmount)
+            </div>
+            <div class="form-group">
+                @Html.DisplayNameFor(c => c.Car.ownerClientID)
+                <div style="display:inline">
+                    @Html.TextBoxFor(x => x.Car.ownerClientID, new { @class = "form-control", id = "txt", disabled = "disabled" })
+                    @Html.ValidationMessageFor(y => y.Car.rentAmount)
+                    @if (Model.Car.ownerClientID == null)
+                {
+                        <button disabled id="btn" class="btn btn-primary">available</button>
+                    }
+                    @if (Model.Car.ownerClientID != null)
+                {
+                        <button id="btn" class="btn btn-primary">make car available</button>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <img src="@Url.Content("~/images/"+Model.Car.Img)" width="40" height="50" class="img" />
+                @Html.HiddenFor(model => model.Car.Img)
+                <input type="file" id="upload" value="@Model.Car.Img" class="btn btn-primary" name="upload" />
+                @Html.ValidationMessageFor(y => y.Car.Img)
+
+            </div>
+
+            <button class="btn btn-primary" type="submit">update</button>
+        }
+        </div>
+    </div>
+}
+else {
+<h1>No Access You Should Login First !</h1>
+}
+<script>
+    $("#btn").click(function () {
+        $("#txt").val('');
+    });
+</script>

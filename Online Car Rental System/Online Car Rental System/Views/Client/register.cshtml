@@ -1,0 +1,103 @@
+﻿@model Online_Car_Rental_System.ViewModels.ClientPreferTypes
+@{
+    ViewBag.Title = "register";
+}
+
+<!DOCTYPE html>
+<head>
+    <link href="~/Content/registerStyle.css" rel="stylesheet" />
+</head>
+<body>
+        <div class="container">
+           
+            <h2>Register</h2>
+            <div class="alert alert-success" id="success" style="display:none">
+                <strong>Inserted Successfully ...</strong>
+            </div>
+            <div class="alert alert-danger" id="danger" style="display:none">
+                <strong>Inserted Successfully ...</strong>
+            </div>
+            <div class="r-form">
+                <form id="r_form">
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.client.Name, new { @class = "control-lable" })
+                        @Html.TextBoxFor(c => c.client.Name, new { @class = "form-control", placeholder = "Enter Your Username", type = "text" })
+                        @Html.ValidationMessageFor(c => c.client.Name)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.client.password)
+                        @Html.TextBoxFor(c => c.client.password, new { @class = "form-control", placeholder = "Enter Your Password", type = "password" })
+                        @Html.ValidationMessageFor(c => c.client.password)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.client.SSN)
+                        @Html.TextBoxFor(c => c.client.SSN, new { @class = "form-control", placeholder = "Enter Your SSN", type = "number" })
+                        @Html.ValidationMessageFor(c => c.client.SSN)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.client.Email)
+                        @Html.TextBoxFor(c => c.client.Email, new { @class = "form-control", placeholder = "Enter Your Email", type = "email" })
+                        @Html.ValidationMessageFor(c => c.client.Email)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.client.Phone)
+                        @Html.TextBoxFor(c => c.client.Phone, new { @class = "form-control", placeholder = "Enter Your Phone", type = "number" })
+                        @Html.ValidationMessageFor(c => c.client.Phone)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.client.Type_Pref)
+                        @Html.DropDownListFor(c => c.client.Type_Pref, new SelectList(Model.ClientPreferType, "ID", "Type"), "Select your Prefer Type", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.client.Type_Pref)
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="save">Register</button>
+                </form>
+            </div>
+        </div>
+</body>
+
+
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+<script>
+
+    $(document).ready(function () {
+
+        $("#save").click(function () {
+
+            if ($("#r_form").valid()) {
+
+                myData = $("#r_form").serialize();
+
+                $.ajax({
+
+                    type: "Post",
+                    url: "/Client/register",
+                    data: myData,
+                    success: function (response) {
+                        
+                        if (response.result == 1) {
+                            $("#success").slideDown(1000);
+                            $("#success").slideUp(1000);;
+                        } else {
+                            $("#danger").slideDown(1000);
+                            $("#danger").slideUp(1000);
+                        }
+                    }
+                })
+            }
+
+            })
+    })
+
+</script>
+}

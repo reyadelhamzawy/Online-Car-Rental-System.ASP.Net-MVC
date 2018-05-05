@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Online_Car_Rental_System.Models.Car>
+@{
+    ViewBag.Title = "Index";
+}
+
+<br /> <br /> <br /> <br /> <br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="h2 text-center">Employee Details</div>
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+
+                    <td>
+                        Model
+                    </td>
+                    <td>
+                        Type
+                    </td>
+                    <td>
+                        numOfChairs
+                    </td>
+                    <td>
+                        rentAmount
+                    </td>
+                    <td>
+                        Color
+                    </td>
+                    <td>
+                        ownerClient
+                    </td>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td>@emp.Name</td>
+                        <td>@emp.Model</td>
+                        <td>@emp.Type</td>
+                        <td>@emp.numOfChairs</td>
+                        <td>@emp.rentAmount</td>
+                        <td>@emp.Color</td>
+                        <td>@emp.ownerClient</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+    <div class="col-sm-2">
+        <div class="btn btn-danger">@Html.ActionLink("Create Pdf", "CreatePdf", "ReportPDF") </div>
+
+    </div>
+</div>
+
+
